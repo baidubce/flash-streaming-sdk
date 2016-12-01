@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>视频采集</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="./capture.css">
+    <script type="text/javascript" src="./backbone.events.js"></script>
+</head>
+<body>
+    <div>
+        <div class="lf-pt">
+            <div class="lf-pt-inner">
+                <div class="header">
+                    <div class="main-head">
+                        <a class="logo" href="http://bce.baidu.com/" target="_blank"></a>
+                        <a class="title" href="http://bce.baidu.com/" target="_blank">百度开放云</a>
+                        <span class="sub-title">推流测试</span>
+                    </div>
+                </div>
+                <div class="statistics-wrap">
+                    <p class="statistics">
+                        <label>测试时长：</label><span id="total-duration">00:00:00</span>
+                        <label>累计流量：</label><span id="total-flow">0</span>
+                        <label>平均码率：</label><span id="ava-bitrate">0kbps</span>
+                        <label>峰值码率：</label><span id="max-bitrate">0kbps</span>
+                    </p>
+                </div>
+                <div class="embed-wrap">
+                    <object type="application/x-shockwave-flash" data="Capture.swf" width="800" height="600" bgcolor="#000000" id="Capture">
+                        <param name="allowfullscreen" value="true">
+                        <param name="allowscriptaccess" value="always">
+                        <param name="wmode" value="opaque">
+                        <param name="menu" value="false">
+                        <param name="name" value="Capture">
+                    </object>
+                </div>
+                <div class="log-wrap">
+                    <div class="textarea-wrap"><textarea id="log" readonly></textarea></div>
+                    <div class="textarea-wrap"><textarea id="config" readonly></textarea></div>
+                </div>
+            </div>
+        </div>
+        <div class="rt-pt">
+            <div class="rt-pt-inner">
+                <h3><span>基本设置</span></h3>
+                <p class="remote-container"><label>推流地址：</label><input type="text" id="remote" placeholder="rtmp://push.bj.bcelive.com/live/abcdefg" /></p>
+                <p><label>摄像头：</label><select id="camera"><option>-</option></select></p>
+                <p><label>麦克风：</label><select id="mic"><option>-</option></select></p>
+                <!-- <p class="mix"><label>混音选择：</label><span><input type="radio" value="2" name="mix" id="mix_1" /><label for="mix_1">麦克风</label></span><span><input type="radio" value="2" name="mix" id="mix_2" /><label for="mix_2">混音</label></span></p> -->
+                <p><label>音量：</label><input type="text" id="mic-gain" value="100" /><span>(0~100)</span></p>
+
+                <h3><span>视频参数</span></h3>
+                <p><label>宽：</label><input type="text" id="camera-width" value="480" /><span>(1~640)</span></p>
+                <p><label>高：</label><input type="text" id="camera-height" value="360" /><span>(1~480)</span></p>
+                <p><label>码率：</label><input type="text" id="camera-kbps" value="512" /><span>(32~2048)kbps</span></p>
+                <p><label>帧率：</label><input type="text" id="camera-fps" value="20" /><span>(1~60)帧/秒</span></p>
+                <p><label>关键帧间隔：</label><input type="text" id="camera-keyframe" value="60" /><span>(1~300)</span></p>
+
+                <h3><span>音频参数</span></h3>
+                <p><label>编解码器：</label>Speex</p>
+                <p><label>采样率：</label>
+                    <select id="mic-rate">
+                        <option value="22">22</option>
+                        <option value="5">5</option>
+                        <option value="8">8</option>
+                        <option value="11">11</option>
+                        <option value="44">44</option>
+                    </select>
+                    <span>kHz</span>
+                </p>
+                <p><label>码率：</label><input type="text" id="mic-kbps" value="128" /><span>(32~400)kbps</span></p>
+                <p class="btn-wrap">
+                    <button id="publish">开始推流</button>
+                    <button id="stop">停止推流</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./capture.js"></script>
+</body>
+</html>
